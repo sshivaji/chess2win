@@ -27,6 +27,7 @@ class Demo extends React.Component {
         super(props);
         this.chess = new Chess();
 
+
         this.state = {
             currentFen: '',
             moves: [],
@@ -40,6 +41,9 @@ class Demo extends React.Component {
         this.end = this.end.bind(this);
         this.undo = this.undo.bind(this);
         this.handleArrowKeys = this.handleArrowKeys.bind(this);
+        this.settings = {
+            showLegalMoves: false
+        }
     }
 
     getNotationRows(moves) {
@@ -83,6 +87,8 @@ class Demo extends React.Component {
         return {
             free: false,
             dests,
+            // Legal moves turned off by default
+            showDests: this.settings.showLegalMoves
             // color: this.myColor()
         }
     }
