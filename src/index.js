@@ -27,7 +27,9 @@ class Demo extends React.Component {
     return {
       free: false,
       dests,
-      // color: this.myColor()
+      showDests: false
+
+        // color: this.myColor()
     }
   }
 
@@ -62,9 +64,11 @@ class Demo extends React.Component {
       lastMove={this.state.lastMove}
       fen={this.state.fen}
       onMove={this.onMove}
-      style={{ margin: 'auto' }}
+      style={{ margin: 'auto'}}
       coordinates={false}
-    />
+      resizable={true}
+
+  />
   }
 }
 
