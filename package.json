@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^1.4.2",
+    "@material-ui/icons": "^2.0.0",
     "chess.js": "^0.10.2",
     "react": "^16.3.2",
     "react-chessground": "^1.0.0",
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4"
   },
+  "main": "App.js",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start src/App.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
