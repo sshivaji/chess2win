@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import Chess from 'chess.js'
 import Chessground from 'react-chessground'
 import 'react-chessground/dist/styles/chessground.css'
+// import './board.css'
 
 class Demo extends React.Component {
 
