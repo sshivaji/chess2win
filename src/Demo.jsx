@@ -46,24 +46,24 @@ class Demo extends React.Component {
         }
     }
 
-    getNotationRows(moves) {
+    static getNotationRows(moves) {
         const rows = [];
-        console.log(moves);
+        // console.log(moves);
+        // console.log("move num");
+        // console.log(0/2+1);
         for (let i = 0; i < moves.length; i += 2) {
+
             const row = <tr style={{width: '70%'}}>
-                <td>
-                    {i / 2 + 1}.
-                </td>
-                <td>
-                    {moves[i]}
-                </td>
-                <td>
-                    {(moves[i + 1]) ? moves[i + 1] : ''}
-                </td>
+                <td>{i / 2 + 1}.</td>
+                <td>{moves[i]}</td>
+                <td>{(moves[i + 1]) ? moves[i + 1] : ''}</td>
             </tr>;
             rows.push(row);
+
         }
-        return rows;
+        // console.log("notation");
+        // console.log(<table><tbody>rows</tbody></table>);
+        return rows
     }
 
     getEmptyRows(len) {
@@ -217,11 +217,13 @@ class Demo extends React.Component {
                     </div>
                 </div>
                 <div className={classes.notation}>
-                    {
-                        this.state.moves.map((move) => {
-                            return <span>{move} </span>
-                        })
-                    }
+
+                        <table>
+                            <tbody>
+                            {Demo.getNotationRows(this.state.moves)}
+                            </tbody>
+                        </table>
+
                 </div>
             </div>
         );
