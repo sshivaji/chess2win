@@ -43,7 +43,8 @@ class Demo extends React.Component {
         this.handleArrowKeys = this.handleArrowKeys.bind(this);
         this.settings = {
             showLegalMoves: false
-        }
+        };
+        this.onMove = this.onMove.bind(this);
     }
 
     static getNotationRows(moves) {
@@ -170,6 +171,18 @@ class Demo extends React.Component {
         }
     };
 
+    onSelect = (square) => {
+        console.log('Received onSelect:', square);
+        console.log(this.chess.moves({verbose: true}));
+        const movesToSquare = this.chess.moves({verbose: true})
+            .filter((move) => move.from.includes(square) || move.to.includes(square));
+        console.log(movesToSquare);
+        if (movesToSquare.length === 1) {
+            const move = movesToSquare[0];
+            this.onMove(move.from, move.to);
+        }
+    };
+
     randomMove = () => {
         // const chess = this.chess;
         // const moves = chess.moves({ verbose: true });
@@ -195,11 +208,15 @@ class Demo extends React.Component {
                         // width={'50%'}
                         turnColor={this.turnColor()}
                         movable={this.calcMovable()}
-                        lastMove={this.state.cachedMoves[this.state.currentMove]}
+                        highlight={{
+                            lastMove: false,
+                        }}
                         fen={this.state.positions[this.state.currentMove]}
                         onMove={this.onMove}
+                        onSelect={this.onSelect}
                         // style={{ margin: 'auto', flex: 1, }}
                         coordinates={false}
+                        addPieceZIndex={true}
                     />
                     <div style={{margin: 'auto',}}>
                         <Button>
